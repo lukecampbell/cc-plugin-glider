@@ -7,11 +7,23 @@ https://github.com/ioos/ioosngdac/wiki
 '''
 
 from compliance_checker.base import BaseCheck, BaseNCCheck, Result
+from compliance_checker import __version__
 import numpy as np
 
 class GliderCheck(BaseNCCheck):
     register_checker = True
     name = 'gliderdac'
+    _cc_spec = 'GliderDAC'
+    _cc_spec_version = '2.0'
+    _cc_description = """This checker validates netCDF datasets against the
+U.S. IOOS National Glider Data Assembly Center's NetCDF 2.0 file format
+specification. The specification provides guidance for how profiles should
+be presented using a contiguous ragged array. The checker does not validate
+the content of metadata, but merely that the minimum set of metadata
+attributes exist and are valid to a reasonable extent."""
+    _cc_url = "https://github.com/ioos/ioosngdac/wiki/NGDAC-NetCDF-File-Format-Version-2"
+    _cc_author = "Luke Campbell"
+    _cc_checker_version = __version__
 
     @classmethod
     def beliefs(cls): 
